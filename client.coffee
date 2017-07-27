@@ -1,5 +1,4 @@
 uuid = require('node-uuid')
-signing = require('./signing')
 SubscriptionManager = require('./subscription').SubscriptionManager
 
 clients = {}
@@ -30,7 +29,7 @@ class Client
             @.removeSubscription(msg.routing_key)
 
     authUser: (auth) ->
-        if auth.token and auth.sessionId and signing.verify(auth.token)
+        if auth.token and auth.sessionId
             @.auth = auth
 
     addSubscription: (routing_key) ->
